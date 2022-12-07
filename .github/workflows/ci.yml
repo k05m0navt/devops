@@ -24,12 +24,12 @@ jobs:
           path: ~/.local/share/virtualenvs
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Install dependencies
-        run: cd ${{ env.working_dir }} && pipenv --rm && pipenv install --deploy --dev
+        run: cd ${{ env.working_dir }} && pipenv install --deploy --dev
       - name: Lint with flake8
-        run: pipenv run -v flake8
+        run: cd ${{ env.working_dir }} && pipenv run -v flake8
         continue-on-error: true
       - name: Test with pytest
-        run: pipenv run -v test
+        run: cd ${{ env.working_dir }} && pipenv run -v test
 
   push_to_registry:
     needs: ["linting_and_testing"]
