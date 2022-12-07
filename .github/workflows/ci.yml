@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: pip install --no-cache-dir pipenv==2022.11.30 && PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
+        run: pip install --no-cache-dir pipenv==2022.11.30 && PIPENV_VENV_IN_PROJECT=1 pipenv install ./${{ env.working_dir }} --deploy
       - name: Lint with flake8
         run: flake8 app_python
         continue-on-error: true
