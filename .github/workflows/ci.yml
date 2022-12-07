@@ -16,12 +16,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          # This path is specific to Ubuntu
-          path: ~/.cache/pip
       - name: Install dependencies
         run: pip install --no-cache-dir pipenv==2022.11.30 && PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
       - name: Lint with flake8
