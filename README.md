@@ -1,6 +1,8 @@
 # DevOps course at Innopolis University
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![CI](https://github.com/k05m0navt/devops/actions/workflows/ci.yml/badge.svg?style=for-the-badge)
 
 ## Overview
 
@@ -56,6 +58,17 @@ To run from the master branch, follow the instructions below:
 3. Run the container. Web app will open at [http://localhost:8000/](http://localhost:8000/).
    ```
    docker run -p 8000:8000 k05m0navt/devops
+   ```
+
+### Unit Testing
+
+1. Make sure that you are in the application directory:
+   ```bash
+   cd devops/app_python
+   ```
+2. Run the tests:
+   ```bash
+   pytest tests
    ```
 
 ## Contacts

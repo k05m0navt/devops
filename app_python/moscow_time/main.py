@@ -26,8 +26,8 @@ async def get_moscow_time():
     """
 
     error_content = """
-        <html> 
-            <head> 
+        <html>
+            <head>
                 <title> Error </title>
             </head>
             <body style=%s>
