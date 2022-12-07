@@ -27,7 +27,7 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: cd ${{ env.working_dir }} && pipenv install --deploy --dev
       - name: Lint with flake8
-        run: pipenv shell && flake8 app_python
+        run: pipenv run flake8 -v
         continue-on-error: true
       - name: Test with pytest
         run: pipenv run test -v

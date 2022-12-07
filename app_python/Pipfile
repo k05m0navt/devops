@@ -10,6 +10,7 @@ black = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 pytest = "*"
 httpx = "*"
+flake8 = "*"
 
 [dev-packages]
 
@@ -17,4 +18,5 @@ httpx = "*"
 python_version = "3.9"
 
 [scripts]
+flake8 = "flake8"
 test = "pytest"
