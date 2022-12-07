@@ -19,10 +19,10 @@ jobs:
       - name: Install dependencies
         run: cd ${{ env.working_dir }} && pip install --no-cache-dir pipenv==2022.11.30 && PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
       - name: Lint with flake8
-        run: flake8 app_python
+        run: pipenv shell && flake8 app_python
         continue-on-error: true
       - name: Test with pytest
-        run: python -m pytest ${{ env.working_dir }}/tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+        run: pipenv shell && pytest ${{ env.working_dir }}/tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
 
   push_to_registry:
     needs: ["linting_and_testing"]
