@@ -2,7 +2,7 @@
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![CI](https://github.com/k05m0navt/devops/actions/workflows/ci.yaml/badge.svg?style=for-the-badge)
+![CI](https://github.com/k05m0navt/devops/actions/workflows/ci.yml/badge.svg?style=for-the-badge)
 
 ## Overview
 
