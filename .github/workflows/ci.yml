@@ -16,13 +16,21 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install pipenv
+        run: python -m pip install --upgrade pipenv wheel
+      - id: cache-pipenv
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Install dependencies
-        run: cd ${{ env.working_dir }} && pip install --no-cache-dir pipenv==2022.11.30 && PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: pipenv install --deploy --dev
       - name: Lint with flake8
         run: pipenv shell && flake8 app_python
         continue-on-error: true
       - name: Test with pytest
-        run: pipenv shell && pytest ${{ env.working_dir }}/tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+        run: pipenv run test -v ${{ env.working_dir }}/tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
 
   push_to_registry:
     needs: ["linting_and_testing"]
