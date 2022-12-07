@@ -30,7 +30,7 @@ jobs:
         run: pipenv shell && flake8 app_python
         continue-on-error: true
       - name: Test with pytest
-        run: pipenv run test ${{ env.working_dir }}/tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+        run: pipenv run test -v
 
   push_to_registry:
     needs: ["linting_and_testing"]
