@@ -24,7 +24,6 @@ jobs:
           path: ~/.local/share/virtualenvs
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Install dependencies
-        if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: cd ${{ env.working_dir }} && pipenv --rm && pipenv install --deploy --dev
       - name: Lint with flake8
         run: pipenv run flake8 -v
